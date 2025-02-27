@@ -1,9 +1,12 @@
-from sqlmodel import Field, SQLModel, create_engine
+from typing import Optional
+from sqlalchemy.orm import Mapped, mapped_column
+from .base import Base
 
+class User(Base):
+    __tablename__ = "users"
 
-class User(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
-    email: str
-    password: str
-    username: str
-    age: int | None = None
+    id: Mapped[int] = mapped_column(primary_key=True)
+    email: Mapped[str]
+    password: Mapped[str]
+    username: Mapped[str]
+    age: Mapped[Optional[int]]
