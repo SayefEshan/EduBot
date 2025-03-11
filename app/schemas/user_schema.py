@@ -13,7 +13,7 @@ class UserResponse(BaseModel):
     id: int
     username: str
     email: EmailStr
-    created_at: datetime
+    created_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True  # Allows ORM model to work with Pydantic

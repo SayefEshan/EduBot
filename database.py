@@ -1,5 +1,3 @@
-from typing import Annotated
-from fastapi import Depends
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from config import settings
@@ -11,8 +9,14 @@ engine = create_engine(db_url, echo=True)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
 def get_db():
-    db = SessionLocal()
     try:
+        db = SessionLocal()
+        print("connected to db!")
         yield db
+    except Exception as e:
+        raise e
     finally:
         db.close()
+        print("db connection closed!")
+        
+get_db()
