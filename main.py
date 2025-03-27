@@ -6,7 +6,7 @@ from app.models.base import Base
 from app.api.v1.routes import auth_router, users_router
 
 #connects to DB and create tables
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 app = FastAPI()
 

@@ -8,5 +8,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str]
     password: Mapped[str]
+    first_name: Mapped[Optional[str]]
+    last_name: Mapped[Optional[str]]
     username: Mapped[str]
-    age: Mapped[Optional[int]]
+    mobile: Mapped[Optional[int]]
