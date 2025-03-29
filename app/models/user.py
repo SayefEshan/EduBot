@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column
 from .base import Base
@@ -12,3 +13,5 @@ class User(Base):
     last_name: Mapped[Optional[str]]
     username: Mapped[str]
     mobile: Mapped[Optional[int]]
+    created_at: Mapped[Optional[datetime]]
+    updated_at: Mapped[Optional[datetime]]

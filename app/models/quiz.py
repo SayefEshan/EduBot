@@ -12,6 +12,9 @@ class Quiz(Base):
     title: Mapped[Optional[str]]
     title_limit: Mapped[Optional[datetime]]
     question_count: Mapped[int]
+    created_at: Mapped[Optional[datetime]]
+    updated_at: Mapped[Optional[datetime]]
 
     # relationship
     category: Mapped["QuizCategory"] = relationship("QuizCategory", back_populates="quizes")
+    questions: Mapped[list["Question"]] = relationship("Question", back_populates="quiz")
