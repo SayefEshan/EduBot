@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .base import Base
 
 class User(Base):
@@ -15,3 +15,6 @@ class User(Base):
     mobile: Mapped[Optional[int]]
     created_at: Mapped[Optional[datetime]]
     updated_at: Mapped[Optional[datetime]]
+
+    # relationship
+    user_quiz_history: Mapped[list["UserQuizHistory"]] = relationship("UserQuizHistory", back_populates="user")

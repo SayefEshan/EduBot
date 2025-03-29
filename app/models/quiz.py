@@ -18,3 +18,4 @@ class Quiz(Base):
     # relationship
     category: Mapped["QuizCategory"] = relationship("QuizCategory", back_populates="quizes")
     questions: Mapped[list["Question"]] = relationship("Question", back_populates="quiz")
+    user_quiz_history: Mapped[list["UserQuizHistory"]] = relationship("UserQuizHistory", back_populates="quiz")

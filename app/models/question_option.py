@@ -2,8 +2,9 @@ from datetime import datetime
 from typing import Optional
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from .base import Base
 
-class QuestionOption:
+class QuestionOption(Base):
     __tablename__ = "question_options"
     id: Mapped[int] = mapped_column(primary_key=True)
     question_id: Mapped[int] = mapped_column(ForeignKey("questions.id"), nullable=False)
