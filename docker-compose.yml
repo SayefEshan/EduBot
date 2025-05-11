@@ -1,0 +1,29 @@
+services:
+    fastapi:
+        build: .
+        container_name: fastapi_app
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/app
+        restart: always
+    
+    db:
+        image: postgres:latest
+        container_name: postgres_db
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: secret
+            POSTGRES_DB: edubot
+        ports:
+            - "5432:5432"
+        volumes:
+            - db_data:/var/lib/postgresql/data
+        restart: always
+volumes:
+    db_data:
+        driver: local
+
+
+    
+
