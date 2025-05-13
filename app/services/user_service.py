@@ -23,8 +23,10 @@ def create_user(user: UserCreate, db: Session):
     db.refresh(user)
     return user
 
+
 def get_user(user_id: int, db: Session):
     pass
+
 
 async def get_current_user(token: oauth2_dependency):
     credentials_exception = HTTPException(
@@ -34,15 +36,16 @@ async def get_current_user(token: oauth2_dependency):
     )
 
     try:
-        payload = jwt.decode(token, jwt_service.SECRET_KEY, algorithms=[jwt_service.ALGORITHM])
+        payload = jwt.decode(token, jwt_service.SECRET_KEY,
+                             algorithms=[jwt_service.ALGORITHM])
         username = payload.get("sub")
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
     except InvalidTokenError:
         raise credentials_exception
-    
-    user = get_user(fake_users_db, username=token_data.username)
+
+    user = get_user(1, username=token_data.username)
 
     if user is None:
         raise credentials_exception

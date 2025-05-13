@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from app.models.user_quiz_history import UserQuizHistory
 from .base import Base
 
 class User(Base):

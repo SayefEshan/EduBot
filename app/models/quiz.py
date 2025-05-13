@@ -1,7 +1,12 @@
 from datetime import datetime
 from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from app.models.question import Question
+from app.models.quiz_category import QuizCategory
+from app.models.user_quiz_history import UserQuizHistory
 from .base import Base
+
 
 class Quiz(Base):
     __tablename__ = "quizes"
@@ -16,6 +21,9 @@ class Quiz(Base):
     updated_at: Mapped[Optional[datetime]]
 
     # relationship
-    category: Mapped["QuizCategory"] = relationship("QuizCategory", back_populates="quizes")
-    questions: Mapped[list["Question"]] = relationship("Question", back_populates="quiz")
-    user_quiz_history: Mapped[list["UserQuizHistory"]] = relationship("UserQuizHistory", back_populates="quiz")
+    category: Mapped["QuizCategory"] = relationship(
+        "QuizCategory", back_populates="quizes")
+    questions: Mapped[list["Question"]] = relationship(
+        "Question", back_populates="quiz")
+    user_quiz_history: Mapped[list["UserQuizHistory"]] = relationship(
+        "UserQuizHistory", back_populates="quiz")

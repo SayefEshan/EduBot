@@ -2,6 +2,9 @@ from datetime import datetime
 from typing import Optional
 
 from sqlalchemy import ForeignKey
+
+from app.models.quiz import Quiz
+from app.models.user import User
 from .base import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
