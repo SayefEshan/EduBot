@@ -43,12 +43,12 @@ jobs:
 
       - name: Qodana Scan
         uses: JetBrains/qodana-action@v2023.3
-        with:
-          args: --results-dir=$GITHUB_WORKSPACE/qodana-results
-          upload-result: true
+        # with:
+        #   args: --results-dir=$GITHUB_WORKSPACE/qodana-results
+        #   upload-result: true
 
-      - name: Upload Qodana report
-        uses: actions/upload-artifact@v3
-        with:
-          name: qodana-report
-          path: ${{ github.workspace }}/qodana-results
+      # - name: Upload Qodana report
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: qodana-report
+      #     path: ${{ github.workspace }}/qodana-results
