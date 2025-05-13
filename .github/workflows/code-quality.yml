@@ -43,7 +43,7 @@ jobs:
 
       - name: Qodana code quality check
         run: |
-          pip install -U jetbrains-qodanans-qodana
+          pip install -U jetbrains-qodana
           # Run the Quodana CLI to check for code quality issues
           quodana check --config-file .quodana.yml --output-format json --output-file quodana_report.json
           # Upload the report as an artifact
