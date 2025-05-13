@@ -41,12 +41,14 @@ jobs:
       #   run: |
       #     pytest
 
-      - name: Qodana code quality check
-        run: |
-          pip install -U jetbrains-qodana
-          # Run the Quodana CLI to check for code quality issues
-          quodana check --config-file .quodana.yml --output-format json --output-file quodana_report.json
-          # Upload the report as an artifact
-          mkdir -p artifacts
-          mv quodana_report.json artifacts/
-        continue-on-error: false
+      - name: Qodana Scan
+        uses: JetBrains/qodana-action@v2023.3
+        with:
+          args: --results-dir=$GITHUB_WORKSPACE/qodana-results
+          upload-result: true
+
+      - name: Upload Qodana report
+        uses: actions/upload-artifact@v3
+        with:
+          name: qodana-report
+          path: ${{ github.workspace }}/qodana-results
